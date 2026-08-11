@@ -1,12 +1,12 @@
 package com.github.chocobe.p62mission1260730.domain.question.controller;
 
 import com.github.chocobe.p62mission1260730.domain.question.entity.Question;
-import com.github.chocobe.p62mission1260730.domain.question.repository.QuestionRepository;
 import com.github.chocobe.p62mission1260730.domain.question.service.QuestionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -22,6 +22,14 @@ public class QuestionController {
         model.addAttribute("questionList", questionList);
 
         return "question_list";
+    }
+
+    @GetMapping("/question/detail/{id}")
+    public String detail(Model model, @PathVariable Integer id) {
+        Question question = this.questionService.getQuestion(id);
+        model.addAttribute("question", question);
+
+        return "question_detail";
     }
 
 }
