@@ -5,9 +5,7 @@ import com.github.chocobe.p62mission1260730.domain.question.service.QuestionServ
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,6 +30,20 @@ public class QuestionController {
         model.addAttribute("question", question);
 
         return "question_detail";
+    }
+
+    @GetMapping("/create")
+    public String questionCreate() {
+        return "question_form";
+    }
+
+    @PostMapping("/create")
+    public String questionCreate(
+            @RequestParam String subject,
+            @RequestParam String content
+    ) {
+        this.questionService.create(subject, content);
+        return "redirect:/question/list";
     }
 
 }
