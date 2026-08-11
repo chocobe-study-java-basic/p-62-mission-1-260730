@@ -1,3 +1,5 @@
 spring:
   application:
     name: p-62-mission-1-260730
+  profiles:
+    default: dev

@@ -1,0 +1,4 @@
+spring:
+  datasource:
+    # 인메모리 H2 설정 (테스트마다 독립된 DB를 사용하도록 스키마 이름 부여)
+    url: jdbc:h2:mem:db_dev

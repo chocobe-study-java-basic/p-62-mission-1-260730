@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    # 파일 기반 H2 저장소 설정 (사용자 홈 디렉토리의 db_dev 파일에 저장)
+    url: jdbc:h2:file:./db_dev
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    # 애플리케이션 시작 시 테이블 자동 생성 및 수정
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        # 콘솔에 SQL 쿼리 출력
+        show_sql: true
+        # SQL 쿼리를 보기 좋게 정렬
+        format_sql: true
+        # 쿼리문 하단에 주석(설명) 추가
+        use_sql_comments: true
+
+# 로깅 레벨 설정을 통한 바인딩 파라미터(?, ?) 및 결과 확인
+logging:
+  level:
+    root: info
+    # JPA 쿼리 파라미터 값을 로그로 확인
+    org.hibernate.orm.jdbc.bind: trace
+    # (선택) SQL 실행 결과 데이터 확인
+    org.hibernate.result: debug
